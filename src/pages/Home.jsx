@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Sparkles, Search, Heart, Clock, ChefHat, ArrowRight } from 'lucide-react'
 import recipes from '../data/recipes'
-import emmaChef from '../assets/emma-chef.jpeg'
 
 const featuredIds = [1, 11, 7, 31, 23, 20]
 const featured = recipes.filter(r => featuredIds.includes(r.id))
@@ -18,47 +17,38 @@ export default function Home() {
           <div className="absolute bottom-20 right-1/3 text-6xl animate-bounce" style={{ animationDelay: '1.5s' }}>🍕</div>
           <div className="absolute top-1/2 left-1/2 text-5xl animate-bounce" style={{ animationDelay: '0.8s' }}>🥗</div>
         </div>
-        <div className="max-w-5xl mx-auto relative z-10 flex flex-col md:flex-row items-center gap-8 md:gap-12">
-          <div className="text-center md:text-left flex-1">
-            <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-body mb-6">
-              <Sparkles size={16} />
-              Welcome, Chef Emma!
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
-              Your Personal
-              <br />
-              <span className="text-sunshine">Cooking Adventure</span>
-              <br />
-              Starts Here!
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl font-body max-w-2xl mx-auto md:mx-0 mb-8">
-              Discover delicious recipes you can make yourself! From quick snacks to impressive dinners,
-              every recipe is picked just for you.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-              <Link
-                to="/browse"
-                className="inline-flex items-center gap-2 bg-white text-coral font-display font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all no-underline text-lg"
-              >
-                <Search size={20} />
-                Find Recipes
-                <ArrowRight size={18} />
-              </Link>
-              <Link
-                to="/favorites"
-                className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white font-display font-bold px-8 py-4 rounded-full hover:bg-white/30 transition-all no-underline text-lg border border-white/30"
-              >
-                <Heart size={20} />
-                My Favorites
-              </Link>
-            </div>
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-body mb-6">
+            <Sparkles size={16} />
+            Welcome, Chef Emma!
           </div>
-          <div className="shrink-0">
-            <img
-              src={emmaChef}
-              alt="Chef Emma"
-              className="w-56 h-72 md:w-72 md:h-96 rounded-3xl object-cover object-top border-4 border-white/30 shadow-2xl"
-            />
+          <h1 className="font-display text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
+            Your Personal
+            <br />
+            <span className="text-sunshine">Cooking Adventure</span>
+            <br />
+            Starts Here!
+          </h1>
+          <p className="text-white/90 text-lg md:text-xl font-body max-w-2xl mx-auto mb-8">
+            Discover delicious recipes you can make yourself! From quick snacks to impressive dinners,
+            every recipe is picked just for you.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/browse"
+              className="inline-flex items-center gap-2 bg-white text-coral font-display font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all no-underline text-lg"
+            >
+              <Search size={20} />
+              Find Recipes
+              <ArrowRight size={18} />
+            </Link>
+            <Link
+              to="/favorites"
+              className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white font-display font-bold px-8 py-4 rounded-full hover:bg-white/30 transition-all no-underline text-lg border border-white/30"
+            >
+              <Heart size={20} />
+              My Favorites
+            </Link>
           </div>
         </div>
       </section>
