@@ -1,17 +1,36 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import recipes from '../data/recipes'
 import RecipeCard from '../components/RecipeCard'
 import FilterBar from '../components/FilterBar'
 import { Search, Frown } from 'lucide-react'
 
+const EMPTY_FILTERS = {
+  protein: '',
+  cuisine: '',
+  ethnicity: '',
+  difficulty: '',
+  search: '',
+}
+
+const STORAGE_KEY = 'emmas-kitchen:browse-filters'
+
 export default function Browse({ toggleFavorite, isFavorite, getHistoryEntry }) {
-  const [filters, setFilters] = useState({
-    protein: '',
-    cuisine: '',
-    ethnicity: '',
-    difficulty: '',
-    search: '',
+  const [filters, setFilters] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem(STORAGE_KEY)
+      return saved ? { ...EMPTY_FILTERS, ...JSON.parse(saved) } : EMPTY_FILTERS
+    } catch {
+      return EMPTY_FILTERS
+    }
   })
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(filters))
+    } catch {
+      // ignore storage errors
+    }
+  }, [filters])
 
   const filtered = useMemo(() => {
     return recipes.filter(r => {
